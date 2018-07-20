@@ -36,7 +36,8 @@ public class UserController {
 	
 	@PostMapping
 	public ResponseEntity<UserVo> addUser(@RequestBody UserVo user) {
-		userService.addUser(user);
+		Long id=userService.addUser(user);
+		user.setUserId(id);
 		return new ResponseEntity<UserVo>(user,HttpStatus.OK);
 	}
 	

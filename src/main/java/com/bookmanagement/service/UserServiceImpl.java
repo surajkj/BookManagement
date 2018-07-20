@@ -58,18 +58,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void addUser(UserVo uservo) {
+	public Long addUser(UserVo uservo) {
+		Long id=null;
 		try {
 			User user = new User();
 			user.setName(uservo.getName());
 			user.setDob(DateUtility.stringToDate(uservo.getDob(),ApplicationConstants.DOB_FORMAT ));
 			user.setCreatedDate(DateUtility.getCurrentDate());
 			user.setIsActive(ApplicationConstants.IS_ACTIVE);
-			userDao.addUser(user);
+			id=userDao.addUser(user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		return id;
 	}
 
 	@Override
