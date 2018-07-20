@@ -33,7 +33,7 @@ public class User {
 	
 	@Column(name="is_active")
 	private Character isActive;
-
+	
 	public Long getUserId() {
 		return userId;
 	}
