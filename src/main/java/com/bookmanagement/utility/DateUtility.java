@@ -13,10 +13,8 @@ public class DateUtility {
 	}
 	
 	public static String setDobFormat(Date date) throws ParseException  {
-		System.out.println("Input date "+date);
 		SimpleDateFormat dobFormat = new SimpleDateFormat(ApplicationConstants.DOB_FORMAT);
 		String dt = dobFormat.format(date);
-		System.out.println("Formatted date "+dt +" Return value "+dobFormat.parse(dt) );
 //		return dobFormat.parse(dt);
 		return dt;
 	}

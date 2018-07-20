@@ -32,7 +32,6 @@ public class UserDaoImpl implements UserDao {
 	public Long addUser(User user) {
 		entityManager.persist(user);
 		entityManager.flush();
-		System.out.println("Id after save");
 		return user.getUserId();
 	}
 
