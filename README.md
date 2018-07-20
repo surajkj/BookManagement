@@ -14,8 +14,38 @@ GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/user```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
 
 GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/user/{userId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Gets User details of given userId
 
-POST &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/user```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Add User
+POST &nbsp;&nbsp;&nbsp;&nbsp;```/user```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Add User
 
 PUT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/user```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Update User
 
 DELETE &nbsp;&nbsp;```/user/{userId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Delete given user
+
+## Book API
+
+GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/book```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Gets all books of given user
+
+GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/book/{bookId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Gets book details of given book id
+
+POST &nbsp;&nbsp;&nbsp;```/{userid}/book```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Add Book for given user
+
+PUT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/book/{bookId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Update book with given Id
+
+DELETE &nbsp;&nbsp;```/{userid}/book/{bookId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Delete given book
+
+## Library API
+
+GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/library```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Gets all library of given user
+
+GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/library/{libraryId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Gets given library details and all books in it
+
+POST &nbsp;&nbsp;&nbsp;```/{userid}/library```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Create library for given user
+
+PUT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/library/{libraryId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Update library details with given id
+
+DELETE &nbsp;&nbsp;```/{userid}/library/{libraryId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Delete given library id
+
+## Book Library API
+
+POST &nbsp;&nbsp;&nbsp;```/{userid}/library/{libraryId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Add book to the given library
+
+DELETE &nbsp;&nbsp;```/{userid}/library/{libraryId}/{bookId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Delete given book from given library
