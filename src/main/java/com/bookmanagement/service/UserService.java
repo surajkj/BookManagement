@@ -3,12 +3,13 @@ package com.bookmanagement.service;
 import java.util.List;
 
 import com.bookmanagement.model.User;
+import com.bookmanagement.vo.UserVo;
 
 public interface UserService {
 	
-	public List<User> getUsers();
+	public List<UserVo> getUsers();
 	
-	public User getUserById(Long userId);
+	public UserVo getUserById(Long userId);
 	
 	public void addUser(User user);
 	
