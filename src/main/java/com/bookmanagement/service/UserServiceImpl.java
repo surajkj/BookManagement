@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.bookmanagement.dao.UserDao;
 import com.bookmanagement.model.User;
+import com.bookmanagement.utility.ApplicationConstants;
+import com.bookmanagement.utility.DateUtility;
 import com.bookmanagement.vo.UserVo;
 
 @Service
@@ -19,14 +21,19 @@ public class UserServiceImpl implements UserService {
 	public List<UserVo> getUsers(){
 		List<User> users =  userDao.getUsers();
 		List<UserVo> userList = new ArrayList<UserVo>();
-		if(users != null) {
-			for (User user : users) {
-				UserVo userVo = new UserVo();
-				userVo.setName(user.getName());
-				userVo.setDob(user.getDob());
-				
-				userList.add(userVo);
+		try {
+			if(users != null) {
+				for (User user : users) {
+					UserVo userVo = new UserVo();
+					userVo.setUserId(user.getUserId());
+					userVo.setName(user.getName());
+					userVo.setDob(DateUtility.setDobFormat(user.getDob()));
+					
+					userList.add(userVo);
+				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return userList;
@@ -35,24 +42,50 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVo getUserById(Long userId) {
 		User user = userDao.getUserById(userId);
-		
-		if(user!=null) {
-			UserVo uservo = new UserVo();
-			uservo.setName(user.getName());
-			uservo.setDob(user.getDob());
-			return uservo;
+		try {
+			if(user!=null) {
+				UserVo uservo = new UserVo();
+				uservo.setUserId(user.getUserId());
+				uservo.setName(user.getName());
+				uservo.setDob(DateUtility.setDobFormat(user.getDob()));
+				return uservo;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
 		return null;
 	}
 
 	@Override
-	public void addUser(User user) {
-		userDao.addUser(user);
+	public void addUser(UserVo uservo) {
+		try {
+			User user = new User();
+			user.setName(uservo.getName());
+			user.setDob(DateUtility.stringToDate(uservo.getDob(),ApplicationConstants.DOB_FORMAT ));
+			user.setCreatedDate(DateUtility.getCurrentDate());
+			user.setIsActive(ApplicationConstants.IS_ACTIVE);
+			userDao.addUser(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override
-	public void updateUser(User user) {
-		userDao.updateUser(user);
+	public void updateUser(UserVo uservo) {
+		try {
+			User user = new User();
+			user.setUserId(uservo.getUserId());
+			user.setName(uservo.getName());
+			user.setDob(DateUtility.stringToDate(uservo.getDob(),ApplicationConstants.DOB_FORMAT ));
+			user.setCreatedDate(DateUtility.getCurrentDate());
+//			user.setIsActive(ApplicationConstants.IS_ACTIVE);
+			userDao.updateUser(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override

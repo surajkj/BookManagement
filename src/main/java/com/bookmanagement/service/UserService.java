@@ -11,9 +11,9 @@ public interface UserService {
 	
 	public UserVo getUserById(Long userId);
 	
-	public void addUser(User user);
+	public void addUser(UserVo user);
 	
-	public void updateUser(User user);
+	public void updateUser(UserVo user);
 	
 	public void deleteUser(Long userId);
 
