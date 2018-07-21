@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class UserVo {
 	
-	public Long userId;
-	public String name;
-	public String dob;
+	private Long userId;
+	private String name;
+	private String dob;
 	
 	public Long getUserId() {
 		return userId;

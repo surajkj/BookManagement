@@ -3,16 +3,17 @@ package com.bookmanagement.service;
 import java.util.List;
 
 import com.bookmanagement.model.Book;
+import com.bookmanagement.vo.BookVo;
 
 public interface BookService {
 	
-	public List<Book> getBooks();
+	public List<BookVo> getBooks(Long userId);
 	
-	public Book getBookById(Long bookId);
+	public BookVo getBookById(Long bookId);
 	
-	public Long addBook(Book book);
+	public Long addBook(BookVo bookVo);
 	
-	public void updateBook(Book book);
+	public BookVo updateBook(BookVo bookVo);
 	
 	public void deleteBook(Long bookId);
 	

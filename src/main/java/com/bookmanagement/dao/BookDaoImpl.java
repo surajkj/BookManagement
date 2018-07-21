@@ -20,8 +20,8 @@ public class BookDaoImpl implements BookDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Book> getBooks() {
-		String hql = "FROM Book ";
+	public List<Book> getBooks(Long userId) {
+		String hql = "FROM Book where user_id="+userId;
 		return (List<Book>) entityManager.createQuery(hql).getResultList();
 	}
 
@@ -38,11 +38,13 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	@Override
-	public void updateBook(Book book) {
+	public Book updateBook(Book book) {
 		Book updatedBook = getBookById(book.getBookId());
 		updatedBook.setName(book.getName());
-		//Set other values
+		updatedBook.setAuthor(book.getAuthor());
+		updatedBook.setGenre(book.getGenre());
 		entityManager.flush();
+		return updatedBook;
 	}
 
 	@Override
