@@ -96,7 +96,5 @@ public class BookServiceImpl implements BookService {
 	public void deleteBook(Long bookId) {
 		bookDao.deleteBook(bookId);
 	}
-	
-	
-	
+
 }
