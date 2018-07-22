@@ -28,6 +28,15 @@ public class BookLibraryDaoImpl implements BookLibraryDao {
 				.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<LibraryBook> getAllLibraryBooksByUserId(Long userId){
+		String hql = "FROM LibraryBook where user_id = :userId ";
+		return (List<LibraryBook>) entityManager.createQuery(hql)
+				.setParameter("libraryId", userId)
+				.getResultList();
+	}
+	
 	@Override
 	public Long addBookToLibrary(LibraryBook libraryBook) {
 		entityManager.persist(libraryBook);
@@ -43,7 +52,26 @@ public class BookLibraryDaoImpl implements BookLibraryDao {
 				.setParameter("libraryId", libraryId)
 				.setParameter("bookId", bookId)
 				.getResultList();
-		System.out.println("Size of book check "+libraryBookList.size());
+
+		if(libraryBookList.size()>0) {
+			return libraryBookList.get(0);
+		}else {
+		return null;
+		}
+	}
+	
+	@Override
+	public void removeBookFromLibrary(Long libraryBookId) {
+		entityManager.remove(getBookById(libraryBookId));
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public LibraryBook getBookById(Long libraryBookId) {
+		String hql = "FROM LibraryBook where library_book_id = :libraryBookId ";
+		List<LibraryBook> libraryBookList =  (List<LibraryBook>) entityManager.createQuery(hql)
+				.setParameter("libraryBookId", libraryBookId)
+				.getResultList();
 		
 		if(libraryBookList.size()>0) {
 			return libraryBookList.get(0);
@@ -51,7 +79,7 @@ public class BookLibraryDaoImpl implements BookLibraryDao {
 		return null;
 		}
 	}
-
+	
 //	@Override
 //	public void deleteBookFromLibrary(Long libraryBookId) {
 //		entityManager.remove(getLibraryBookById(libraryBookId));

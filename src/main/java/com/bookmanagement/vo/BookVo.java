@@ -4,6 +4,7 @@ public class BookVo {
 	
 	private Long bookId;
 	private Long userId;
+	private Long libraryBookId;
 	private String bookName;
 	private String author;
 	private String genre;
@@ -37,11 +38,16 @@ public class BookVo {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
+	public Long getLibraryBookId() {
+		return libraryBookId;
+	}
+	public void setLibraryBookId(Long libraryBookId) {
+		this.libraryBookId = libraryBookId;
+	}
 	@Override
 	public String toString() {
-		return "Book [bookId=" + bookId + ", userId=" + userId + ", bookName=" + bookName + ", author=" + author
-				+ ", genre=" + genre + "]";
+		return "BookVo [bookId=" + bookId + ", userId=" + userId + ", libraryBookId=" + libraryBookId + ", bookName="
+				+ bookName + ", author=" + author + ", genre=" + genre + "]";
 	}
-	
-	
+
 }

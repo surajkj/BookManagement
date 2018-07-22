@@ -56,6 +56,8 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 						bookVo.setBookName(book.getName());
 						bookVo.setAuthor(book.getAuthor());
 						bookVo.setGenre(book.getGenre());
+						bookVo.setLibraryBookId(libraryBook.getLibraryBookId());
+						bookVo.setUserId(book.getUser().getUserId());
 						bookVoList.add(bookVo);
 					}
 					libraryBookVo.setBookList(bookVoList);
@@ -65,7 +67,26 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 		}
 		return null;
 	}
-
+	
+	public List<LibraryBookVo> getBooksInLibraryByUserId(Long userId){
+		
+		User user = userDao.getUserById(userId);
+		if(user!=null) {
+			List<Library> libraryList = libraryDao.getLibraries(userId);
+			if(libraryList != null) {
+				List<LibraryBookVo> libraryBookVoList = new ArrayList<LibraryBookVo>();
+				for (Library library : libraryList) {
+					LibraryBookVo libraryBookVo=getBooksInLibrary(userId,library.getLibraryId());
+					libraryBookVoList.add(libraryBookVo);
+				}
+				return libraryBookVoList;
+			}
+			
+		}
+		return null;
+	}
+	
+	
 	@Override
 	public Long addBookInLibrary(AddBookInLibraryVo addBookInLibraryVo) {
 		LibraryBook libraryBook;
@@ -102,7 +123,11 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 		}
 		return libraryBookId;
 	}
-
+	
+	@Override
+	public void removeBookFromLibrary(Long libraryBookId) {
+		bookLibraryDao.removeBookFromLibrary(libraryBookId);
+	}
 	
 
 }

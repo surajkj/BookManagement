@@ -28,7 +28,7 @@ GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/book/{bookId}```&nbsp;&nbsp
 
 POST &nbsp;&nbsp;&nbsp;```/{userid}/book```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Add Book for given user
 
-PUT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/book/{bookId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Update book with given Id
+PUT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/book```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Update book with given Id
 
 DELETE &nbsp;&nbsp;```/{userid}/book/{bookId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Delete given book
 
@@ -40,7 +40,7 @@ GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/library/{libraryId}```&nbsp
 
 POST &nbsp;&nbsp;&nbsp;```/{userid}/library```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Create library for given user
 
-PUT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/library/{libraryId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Update library details with given id
+PUT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/library```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Update library details with given id
 
 DELETE &nbsp;&nbsp;```/{userid}/library/{libraryId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Delete given library id
 
