@@ -46,6 +46,10 @@ DELETE &nbsp;&nbsp;```/{userid}/library/{libraryId}```&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 ## Book Library API
 
-POST &nbsp;&nbsp;&nbsp;```/{userid}/library/{libraryId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Add book to the given library
+GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/librarybook/```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Get all Libraries with books in it
 
-DELETE &nbsp;&nbsp;```/{userid}/library/{libraryId}/{bookId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Delete given book from given library
+GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/{userid}/librarybook/{libraryId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Get Books in given Library
+
+POST &nbsp;&nbsp;&nbsp;```/{userid}/librarybook```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Add book to the given library
+
+DELETE &nbsp;&nbsp;```/{userid}/librarybook/{libraryBookId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Delete given book from given library
