@@ -16,6 +16,7 @@ import com.bookmanagement.model.LibraryBook;
 import com.bookmanagement.model.User;
 import com.bookmanagement.utility.ApplicationConstants;
 import com.bookmanagement.utility.DateUtility;
+import com.bookmanagement.vo.AddBookInLibraryVo;
 import com.bookmanagement.vo.BookVo;
 import com.bookmanagement.vo.LibraryBookVo;
 
@@ -66,21 +67,36 @@ public class BookLibraryServiceImpl implements BookLibraryService {
 	}
 
 	@Override
-	public Long addBookInLibrary(LibraryBookVo libraryBookVo) {
-		LibraryBook libraryBook = new LibraryBook();
+	public Long addBookInLibrary(AddBookInLibraryVo addBookInLibraryVo) {
+		LibraryBook libraryBook;
 		Long libraryBookId=null;
 		try {
-			Library library = libraryDao.getLibraryById(libraryBookVo.getLibraryId());
-			Book book = bookDao.getBookById(libraryBookVo.getBookId());
-			if(library!=null) {
-				if(book!=null) {
-					libraryBook.setBook(book);
-					libraryBook.setLibrary(library);
-					libraryBook.setCreatedDate(DateUtility.getCurrentDate());
-					libraryBook.setIsActive(ApplicationConstants.IS_ACTIVE);
-					libraryBookId=bookLibraryDao.addBookToLibrary(libraryBook);
+			//Check if given combination already present
+			libraryBook=bookLibraryDao.getBookByLibraryBookId(addBookInLibraryVo.getLibraryId(), 
+					addBookInLibraryVo.getBookId());
+			System.out.println("Checking if book Already Present _______________ 1.1");
+			if(libraryBook != null) {
+				System.out.println("---------1.2----------");
+				throw new Exception("Book Already Present in Library");
+			}
+			System.out.println("---------1.3----------");
+			libraryBook = new LibraryBook();
+			User user = userDao.getUserById(addBookInLibraryVo.getUserId());
+			Library library = libraryDao.getLibraryById(addBookInLibraryVo.getLibraryId());
+			Book book = bookDao.getBookById(addBookInLibraryVo.getBookId());
+			if(user!=null) {
+				if(library!=null) {
+					if(book!=null) {
+						libraryBook.setBook(book);
+						libraryBook.setLibrary(library);
+						libraryBook.setUser(user);
+						libraryBook.setCreatedDate(DateUtility.getCurrentDate());
+						libraryBook.setIsActive(ApplicationConstants.IS_ACTIVE);
+						libraryBookId=bookLibraryDao.addBookToLibrary(libraryBook);
+					}
 				}
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

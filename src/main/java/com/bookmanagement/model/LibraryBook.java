@@ -28,15 +28,17 @@ public class LibraryBook  implements java.io.Serializable {
      private Long libraryBookId;
      private Book book;
      private Library library;
+     private User user;
      private Date createdDate;
      private Character isActive;
 
     public LibraryBook() {
     }
 
-    public LibraryBook(Book book, Library library, Date createdDate, Character isActive) {
+    public LibraryBook(Book book, Library library,User user, Date createdDate, Character isActive) {
        this.book = book;
        this.library = library;
+       this.user = user;
        this.createdDate = createdDate;
        this.isActive = isActive;
     }
@@ -93,8 +95,15 @@ public class LibraryBook  implements java.io.Serializable {
         this.isActive = isActive;
     }
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="user_id")
+	public User getUser() {
+		return user;
+	}
 
-
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 }
 

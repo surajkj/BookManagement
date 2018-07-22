@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmanagement.service.BookLibraryService;
+import com.bookmanagement.vo.AddBookInLibraryVo;
 import com.bookmanagement.vo.BookVo;
 import com.bookmanagement.vo.LibraryBookVo;
 
@@ -28,11 +29,12 @@ public class BookLibraryController {
 	}
 	
 	@PostMapping()
-	public ResponseEntity<LibraryBookVo> addBookToLibrary(@PathVariable("userId") Long userId,
-			@RequestBody LibraryBookVo libraryBookVo){
-		Long libraryBookId = bookLibraryService.addBookInLibrary(libraryBookVo);
-		libraryBookVo.setLibraryBookId(libraryBookId);
-		return new ResponseEntity<LibraryBookVo>(libraryBookVo,HttpStatus.OK);
+	public ResponseEntity<AddBookInLibraryVo> addBookToLibrary(@PathVariable("userId") Long userId,
+			@RequestBody AddBookInLibraryVo addBookInLibraryVo){
+		addBookInLibraryVo.setUserId(userId);
+		Long libraryBookId = bookLibraryService.addBookInLibrary(addBookInLibraryVo);
+		addBookInLibraryVo.setLibraryBookId(libraryBookId);
+		return new ResponseEntity<AddBookInLibraryVo>(addBookInLibraryVo,HttpStatus.OK);
 	}
 	
 	

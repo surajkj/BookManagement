@@ -2,6 +2,7 @@ package com.bookmanagement.vo;
 
 public class AddBookInLibraryVo {
 	
+	private Long libraryBookId;
 	private Long libraryId;
 	private Long bookId;
 	private Long userId;
@@ -24,9 +25,16 @@ public class AddBookInLibraryVo {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+	public Long getLibraryBookId() {
+		return libraryBookId;
+	}
+	public void setLibraryBookId(Long libraryBookId) {
+		this.libraryBookId = libraryBookId;
+	}
 	@Override
 	public String toString() {
-		return "AddBookInLibraryVo [libraryId=" + libraryId + ", bookId=" + bookId + ", userId=" + userId + "]";
+		return "AddBookInLibraryVo [libraryBookId=" + libraryBookId + ", libraryId=" + libraryId + ", bookId=" + bookId
+				+ ", userId=" + userId + "]";
 	}
 	
 }
