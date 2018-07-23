@@ -1,6 +1,7 @@
 package com.bookmanagement.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bookmanagement.model.User;
 import com.bookmanagement.service.UserService;
+import com.bookmanagement.vo.ChangePasswordVo;
+import com.bookmanagement.vo.UserFormVo;
 import com.bookmanagement.vo.UserVo;
 
 @RestController
@@ -35,16 +37,30 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<UserVo> addUser(@RequestBody UserVo user) {
+	public ResponseEntity<UserFormVo> addUser(@RequestBody UserFormVo user) {
 		Long id=userService.addUser(user);
 		user.setUserId(id);
-		return new ResponseEntity<UserVo>(user,HttpStatus.OK);
+		return new ResponseEntity<UserFormVo>(user,HttpStatus.OK);
+	}
+	
+	@PostMapping("/validate")
+	public ResponseEntity<Boolean> validatePassword(@RequestBody UserFormVo user){
+		Boolean validateStatus=false;
+		validateStatus = userService.validatePassword(user);
+		return new ResponseEntity<Boolean>(validateStatus,HttpStatus.OK);
 	}
 	
 	@PutMapping
-	public ResponseEntity<UserVo> updateUser(@RequestBody UserVo user) {
+	public ResponseEntity<UserFormVo> updateUser(@RequestBody UserFormVo user) {
 		userService.updateUser(user);
-		return new ResponseEntity<UserVo>(user,HttpStatus.OK);
+		return new ResponseEntity<UserFormVo>(user,HttpStatus.OK);
+	}
+	
+	@PutMapping("/changepassword")
+	public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordVo changePasswordVo){
+		Boolean passwordUpdated=false;
+		passwordUpdated = userService.updatePassword(changePasswordVo);
+		return new ResponseEntity<Boolean>(passwordUpdated,HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{userId}")

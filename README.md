@@ -16,7 +16,11 @@ GET &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/user/{userId}```&nbsp;&nbsp;&nbsp;&n
 
 POST &nbsp;&nbsp;&nbsp;&nbsp;```/user```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Add User
 
+POST &nbsp;&nbsp;&nbsp;&nbsp;```/user/validate```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Validate Password of user
+
 PUT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/user```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Update User
+
+PUT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;```/user/changepassword```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Update User Password
 
 DELETE &nbsp;&nbsp;```/user/{userId}```&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Delete given user
 

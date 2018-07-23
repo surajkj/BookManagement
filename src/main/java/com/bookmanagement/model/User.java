@@ -31,22 +31,32 @@ public class User  implements java.io.Serializable {
      private Date dob;
      private Date createdDate;
      private Character isActive;
+     private String userName;
+     private String password;
+     private String email_id;
      private Set<Library> libraries = new HashSet<Library>(0);
      private Set<Book> books = new HashSet<Book>(0);
 
     public User() {
     }
 
-    public User(String name, Date dob, Date createdDate, Character isActive, Set<Library> libraries, Set<Book> books) {
-       this.name = name;
-       this.dob = dob;
-       this.createdDate = createdDate;
-       this.isActive = isActive;
-       this.libraries = libraries;
-       this.books = books;
-    }
-   
-     @Id @GeneratedValue(strategy=IDENTITY)
+     public User(Long userId, String name, Date dob, Date createdDate, Character isActive, String userName,
+			String password, String email_id, Set<Library> libraries, Set<Book> books) {
+		this.userId = userId;
+		this.name = name;
+		this.dob = dob;
+		this.createdDate = createdDate;
+		this.isActive = isActive;
+		this.userName = userName;
+		this.password = password;
+		this.email_id = email_id;
+		this.libraries = libraries;
+		this.books = books;
+	}
+
+
+
+	@Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="user_id", unique=true, nullable=false)
@@ -115,9 +125,36 @@ public class User  implements java.io.Serializable {
     public void setBooks(Set<Book> books) {
         this.books = books;
     }
+    
+    @Column(name="user_name", length=50)
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+	@Column(name="password", length=500)
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	@Column(name="email_id", length=100)
+	public String getEmail_id() {
+		return email_id;
+	}
+
+	public void setEmail_id(String email_id) {
+		this.email_id = email_id;
+	}
 
 
-
+    
 
 }
 

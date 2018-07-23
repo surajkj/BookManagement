@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bookmanagement.model.LibraryBook;
 import com.bookmanagement.model.User;
 
 @Transactional
@@ -37,9 +38,6 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void updateUser(User user) {
-		User updatedUser = getUserById(user.getUserId());
-		updatedUser.setName(user.getName());
-		updatedUser.setDob(user.getDob());
 		entityManager.flush();
 	}
 
@@ -47,6 +45,21 @@ public class UserDaoImpl implements UserDao {
 	public void deleteUser(Long userId) {
 		entityManager.remove(getUserById(userId));
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public User getUserByUserName(String userName) {
+		String hql = "FROM User where user_name = :userName";
+		List<User> userList = entityManager.createQuery(hql)
+				.setParameter("userName", userName)
+				.getResultList();
+
+		if(userList.size()>0) {
+			return userList.get(0);
+		}else {
+		return null;
+		}
 	}
 
 }

@@ -14,6 +14,9 @@ DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
   `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(50) UNIQUE NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `email_id` varchar(100) UNIQUE NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `created_date` datetime DEFAULT NULL,
@@ -97,3 +100,13 @@ LOCK TABLES `library_book` WRITE;
 INSERT INTO `library_book` VALUES (1,1,1,1,'2018-07-22 18:54:18','Y'),(2,NULL,1,2,'2018-07-22 19:10:20','Y'),(3,1,1,3,'2018-07-22 20:29:29','Y'),(5,5,5,7,'2018-07-22 21:26:52','Y'),(6,1,2,5,'2018-07-22 21:46:32','Y');
 UNLOCK TABLES;
 
+--ALTER TABLE SCRIPT
+
+ALTER TABLE User
+ADD user_name varchar(50) UNIQUE NOT NULL;
+
+ALTER TABLE User
+ADD password varchar(500) NOT NULL;
+
+ALTER TABLE User
+ADD email_id varchar(100) UNIQUE NOT NULL;
