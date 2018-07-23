@@ -33,7 +33,7 @@ public class BookLibraryDaoImpl implements BookLibraryDao {
 	public List<LibraryBook> getAllLibraryBooksByUserId(Long userId){
 		String hql = "FROM LibraryBook where user_id = :userId ";
 		return (List<LibraryBook>) entityManager.createQuery(hql)
-				.setParameter("libraryId", userId)
+				.setParameter("userId", userId)
 				.getResultList();
 	}
 	
